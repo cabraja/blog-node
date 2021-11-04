@@ -18,5 +18,17 @@ const addPost = async(req,res) => {
     }
 }
 
+const getSinglePost = async(req,res) => {
+    try {
+        const {id} = req.params
+        const singlePost = await Post.findById(id)
+        res.status(400).json({singlePost})
+    } catch (error) {
+        res.status(400).json({msg:error})
+    }
+}
 
-module.exports = {getAllPosts,addPost}
+
+
+
+module.exports = {getAllPosts,addPost,getSinglePost}
